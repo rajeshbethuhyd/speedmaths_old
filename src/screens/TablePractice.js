@@ -8,7 +8,9 @@ import {
   Pressable,
 } from 'react-native';
 import React, {useState} from 'react';
-import GenerateRandNum from '../components/GenerateRandNum';
+import GenerateRandNum, {
+  GenerateRandTable,
+} from '../components/GenerateRandNum';
 import IsAnsValid from '../components/IsAnsValid';
 import Lottie from 'lottie-react-native';
 
@@ -18,12 +20,21 @@ export default function TablePractice({navigation, route}) {
   // const [ansRight, setAnsRight] = useState(false);
   const [showAns, setShowAns] = useState(false);
   const [ansWrong, setAnsWrong] = useState(false);
-  const tableNum = route.params.tableNum;
+  const is_mixed = route.params.is_mixed;
+  let table = null;
   let randomNum = null;
   if (init == true) {
     setInit(false);
     randomNum = GenerateRandNum();
+    if (is_mixed) {
+      table = GenerateRandTable();
+      console.log('Here TABLE: ' + table);
+    } else {
+      table = route.params.tableNum;
+    }
   }
+
+  const [tableNum, setTableNum] = useState(table);
   const [randNum, setRandNum] = useState(randomNum);
   const answer = tableNum * randNum;
 
@@ -51,24 +62,25 @@ export default function TablePractice({navigation, route}) {
         style={styles.AnsSubmitBtn}
         onPress={() => {
           if (userAns == '') {
-            return;
+            // return;
           }
-          if (IsAnsValid(userAns)) {
-            if (userAns == answer) {
-              setShowAns(false);
-              setUserAns('');
-              setRandNum(GenerateRandNum());
-              setAnsWrong(false);
-            } else {
-              setShowAns(false);
-              setAnsWrong(true);
-            }
-          } else {
-            Alert.alert(
-              'Invalid Input',
-              "Please don't use any special symbols.",
-            );
-          }
+          //if (IsAnsValid(userAns)) {
+          // if (userAns == answer) {
+          setShowAns(false);
+          setUserAns('');
+          setRandNum(GenerateRandNum());
+          setTableNum(GenerateRandTable());
+          setAnsWrong(false);
+          // } else {
+          //   setShowAns(false);
+          //   setAnsWrong(true);
+          // }
+          // } else {
+          //   Alert.alert(
+          //     'Invalid Input',
+          //     "Please don't use any special symbols.",
+          //   );
+          // }
         }}>
         <Text style={styles.AnsSubmitBtnText}>SUBMIT</Text>
       </Pressable>
