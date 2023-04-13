@@ -62,25 +62,25 @@ export default function TablePractice({navigation, route}) {
         style={styles.AnsSubmitBtn}
         onPress={() => {
           if (userAns == '') {
-            // return;
+            return;
           }
-          //if (IsAnsValid(userAns)) {
-          // if (userAns == answer) {
-          setShowAns(false);
-          setUserAns('');
-          setRandNum(GenerateRandNum());
-          setTableNum(GenerateRandTable());
-          setAnsWrong(false);
-          // } else {
-          //   setShowAns(false);
-          //   setAnsWrong(true);
-          // }
-          // } else {
-          //   Alert.alert(
-          //     'Invalid Input',
-          //     "Please don't use any special symbols.",
-          //   );
-          // }
+          if (IsAnsValid(userAns)) {
+            if (userAns == answer) {
+              setShowAns(false);
+              setUserAns('');
+              setRandNum(GenerateRandNum());
+              setTableNum(GenerateRandTable());
+              setAnsWrong(false);
+            } else {
+              setShowAns(false);
+              setAnsWrong(true);
+            }
+          } else {
+            Alert.alert(
+              'Invalid Input',
+              "Please don't use any special symbols.",
+            );
+          }
         }}>
         <Text style={styles.AnsSubmitBtnText}>SUBMIT</Text>
       </Pressable>
