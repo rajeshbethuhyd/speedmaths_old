@@ -10,7 +10,7 @@ export default function TableItem({
     <Pressable
       style={styles.TableItemStyles}
       onPress={() => {
-        navigation.navigate('Practice', {
+        navigation.navigate('Practice Tables', {
           tableNum: tableNum,
           is_mixed: is_mixed,
         });
