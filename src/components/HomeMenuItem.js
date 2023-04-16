@@ -3,13 +3,31 @@ import React from 'react';
 
 export default function HomeMenuItem({navigation}) {
   return (
-    <View style={styles.HomeMenuItemStyles}>
-      <Pressable
-        onPress={() => {
-          navigation.navigate('Tables');
-        }}>
-        <Text style={styles.HomeMenuItemText}>Tables</Text>
-      </Pressable>
+    <View>
+      <View style={styles.HomeMenuItemStyles}>
+        <Pressable
+          onPress={() => {
+            navigation.navigate('Tables');
+          }}>
+          <Text style={styles.HomeMenuItemText}>TABLES</Text>
+        </Pressable>
+      </View>
+      <View style={styles.HomeMenuItemStyles}>
+        <Pressable
+          onPress={() => {
+            navigation.navigate('Squares');
+          }}>
+          <Text style={styles.HomeMenuItemText}>SQUARES</Text>
+        </Pressable>
+      </View>
+      <View style={styles.HomeMenuItemStyles}>
+        <Pressable
+          onPress={() => {
+            navigation.navigate('Cubes');
+          }}>
+          <Text style={styles.HomeMenuItemText}>CUBES</Text>
+        </Pressable>
+      </View>
     </View>
   );
 }

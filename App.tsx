@@ -6,6 +6,8 @@ import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import Tables from './src/screens/Tables';
 import HomeMenuItem from './src/components/HomeMenuItem';
 import TablePractice from './src/screens/TablePractice';
+import Squares from './src/screens/Squares';
+import Cubes from './src/screens/Cubes';
 const Stack = createNativeStackNavigator();
 
 export default function App() {
@@ -15,6 +17,8 @@ export default function App() {
         <Stack.Screen name="Home" component={Home} />
         <Stack.Screen name="Tables" component={Tables} />
         <Stack.Screen name="Practice Tables" component={TablePractice} />
+        <Stack.Screen name="Squares" component={Squares} />
+        <Stack.Screen name="Cubes" component={Cubes} />
       </Stack.Navigator>
     </NavigationContainer>
   );
