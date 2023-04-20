@@ -132,6 +132,7 @@ const styles = StyleSheet.create({
     fontSize: 30,
     borderBottomColor: 'black',
     borderBottomWidth: 1,
+    color: 'black',
   },
 
   AnsSubmitBtn: {
