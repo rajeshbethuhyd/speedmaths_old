@@ -17,14 +17,12 @@ import Lottie from 'lottie-react-native';
 export default function TablePractice({navigation, route}) {
   const [init, setInit] = useState(true);
   const [userAns, setUserAns] = useState('');
-  // const [ansRight, setAnsRight] = useState(false);
   const [showAns, setShowAns] = useState(false);
   const [ansWrong, setAnsWrong] = useState(false);
   const is_mixed = route.params.is_mixed;
   let table = null;
   let randomNum = null;
   if (init == true) {
-    setInit(false);
     randomNum = GenerateRandNum();
     if (is_mixed) {
       table = GenerateRandTable();
@@ -32,12 +30,13 @@ export default function TablePractice({navigation, route}) {
     } else {
       table = route.params.tableNum;
     }
+    setInit(false);
   }
 
   const [tableNum, setTableNum] = useState(table);
   const [randNum, setRandNum] = useState(randomNum);
   const answer = tableNum * randNum;
-
+  console.log('TableNum: ' + tableNum);
   return (
     <View>
       <View style={styles.TableNumContainer}>
@@ -69,7 +68,9 @@ export default function TablePractice({navigation, route}) {
               setShowAns(false);
               setUserAns('');
               setRandNum(GenerateRandNum());
-              setTableNum(GenerateRandTable());
+              if (is_mixed) {
+                setTableNum(GenerateRandTable());
+              }
               setAnsWrong(false);
             } else {
               setShowAns(false);
@@ -120,6 +121,7 @@ const styles = StyleSheet.create({
   TableNumStyles: {
     fontSize: 40,
     fontWeight: 600,
+    color: '#000',
   },
   AnsNumContainer: {
     marginTop: 15,
